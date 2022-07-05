@@ -9,6 +9,6 @@ export { _testValue as testValue };
 export function rewire$testValue($stub) {
   _testValue = $stub;
 }
-export function restore() {
+export default function restore() {
   _testValue = testValue;
 }

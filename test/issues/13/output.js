@@ -27,7 +27,7 @@ export function rewire$eggs($stub) {
 export function rewire$foo($stub) {
   _foo = $stub;
 }
-export function restore() {
+export default function restore() {
   spam = _spam;
   _eggs = _eggs2;
   _foo = _foo2;

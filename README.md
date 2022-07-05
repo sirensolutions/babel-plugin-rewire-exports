@@ -14,7 +14,8 @@ See [How it works](#how-it-works) section for implementation details.
 Plugin transforms module exports in such a way that they can be stubbed (or "rewired") via the following API:
 * default export - plugin exports additional `rewire(stub)` function that allows to replace the original
 * named exports - for each export (e.g. `export var foo`) an additional function `rewire$foo(stub)` is exported
-* `restore()` function allows to restore the exports to their original values
+* `restore()` function allows to restore the exports to their original values. `restore` will be exported as default export if one doesn't
+exist, or as a named export if a default export does exist
 * if there are existing `rewire` or `restore` top-level identifiers, the generated exports will be named
 `rewire$default` and `restore$rewire` respectively
 

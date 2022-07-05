@@ -101,7 +101,7 @@ export function rewire$corge($stub) {
 export function rewire$grault($stub) {
   grault = $stub;
 }
-export function restore() {
+export default function restore() {
   baz = _baz;
   rest = _rest;
   foo = _foo;

@@ -13,8 +13,14 @@ export default function ({types: t}) {
     }
   `, {sourceType: 'module'});
 
-  const buildRestore = template(`
+  const buildNamedRestore = template(`
     export function RESTORE() {
+      BODY
+    }
+  `, {sourceType: 'module'});
+
+  const buildDefaultRestore = template(`
+    export default function RESTORE() {
       BODY
     }
   `, {sourceType: 'module'});
@@ -42,8 +48,9 @@ export default function ({types: t}) {
       Program: {
         enter(path, state) {
           state.exports = [];
+          state.hasDefaultExport = false;
         },
-        exit(path, {exports}) {
+        exit(path, {exports, hasDefaultExport}) {
           if (!exports.length) return;
 
           // de-duplicate the exports
@@ -95,7 +102,10 @@ export default function ({types: t}) {
 
           const body = [
             ...stubs,
-            markVisited(buildRestore({RESTORE: restore, BODY: assignments}))
+            markVisited(hasDefaultExport
+              ? buildNamedRestore({RESTORE: restore, BODY: assignments})
+              : buildDefaultRestore({RESTORE: restore, BODY: assignments})
+            )
           ];
 
           if (tempVars.length) {
@@ -106,7 +116,12 @@ export default function ({types: t}) {
         }
       },
       // export default
-      ExportDefaultDeclaration(path, {exports, opts}) {
+      ExportDefaultDeclaration(path, state) {
+        if (path.node[VISITED]) return;
+
+        const {exports, opts} = state;
+        state.hasDefaultExport = true;
+
         const declaration = path.node.declaration;
         const isIdentifier = t.isIdentifier(declaration);
         const binding = isIdentifier && path.scope.getBinding(declaration.name);

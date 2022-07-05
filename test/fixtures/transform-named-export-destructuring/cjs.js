@@ -15,7 +15,7 @@ exports.rewire$other = rewire$other;
 exports.rewire$quux = rewire$quux;
 exports.rewire$corge = rewire$corge;
 exports.rewire$grault = rewire$grault;
-exports.restore = restore;
+exports["default"] = restore;
 exports.bb = exports.aa = exports.grault = exports.corge = exports.quux = exports.other = exports.quuz = exports.eggs = exports.ham = exports.foo = exports.rest = exports.baz = void 0;
 
 function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }

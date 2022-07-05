@@ -15,7 +15,7 @@ export function rewire$foo($stub) {
 export function rewire$baz($stub) {
   _baz = $stub;
 }
-export function restore() {
+export default function restore() {
   _whatsit = whatsit;
   _foo = foo;
   _baz = baz;

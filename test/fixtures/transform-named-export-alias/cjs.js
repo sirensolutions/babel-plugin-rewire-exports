@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.rewire$bar = rewire$bar;
-exports.restore = restore;
+exports["default"] = restore;
 exports.bar = void 0;
 var foo;
 exports.bar = foo;

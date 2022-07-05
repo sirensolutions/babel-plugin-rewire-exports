@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.rewire$say = rewire$say;
-exports.restore = restore;
+exports["default"] = restore;
 exports.say = void 0;
 
 var _module = require("./module1");

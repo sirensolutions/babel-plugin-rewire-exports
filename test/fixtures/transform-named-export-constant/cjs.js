@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.rewire$whatsit = rewire$whatsit;
 exports.rewire$foo = rewire$foo;
 exports.rewire$baz = rewire$baz;
-exports.restore = restore;
+exports["default"] = restore;
 exports.whatsit = exports.baz = exports.foo = void 0;
 var foo = 'bar',
     baz = 'qux';

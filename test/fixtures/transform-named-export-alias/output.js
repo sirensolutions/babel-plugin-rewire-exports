@@ -4,6 +4,6 @@ var _bar = foo;
 export function rewire$bar($stub) {
   foo = $stub;
 }
-export function restore() {
+export default function restore() {
   foo = _bar;
 }
