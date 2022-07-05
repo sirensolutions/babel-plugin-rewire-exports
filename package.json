@@ -4,12 +4,12 @@
   "description": "Babel plugin for stubbing (ES6, ES2015) module exports",
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rimraf lib",
+    "clean": "./node_modules/rimraf/bin.js lib",
     "build": "babel src -d lib",
     "lint": "eslint src",
     "test": "npm run lint && mocha --require test/babel-polyfill",
     "test:watch": "npm run test -- --watch",
-    "prepack": "npm run clean && npm run build"
+    "prepare": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
